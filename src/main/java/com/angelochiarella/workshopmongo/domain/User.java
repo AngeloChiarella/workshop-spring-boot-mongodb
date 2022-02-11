@@ -18,8 +18,8 @@ public class User implements Serializable // Converter objs em bytes
 	private String name;
 	private String email;
 
-	@DBRef(lazy = true) // Atributo referenciando outra coleção do MongoDB | (lazy = true) os posts
-						// serão carregados se eu acessa-los
+	 // Atributo referenciando outra coleção do MongoDB
+	@DBRef(lazy = true)	// (lazy = true) os posts serão carregados se eu acessa-los
 	private List<Post> posts = new ArrayList<>();
 
 	public User()

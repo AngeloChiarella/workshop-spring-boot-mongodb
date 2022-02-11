@@ -56,5 +56,15 @@ public class UserResource
 		service.delete(id);
 		return ResponseEntity.noContent().build(); //noContent operação que nao retorna nada (204) 
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT) // @PostMapping
+	public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) // @PathVariable - Casa o id com id recebido da url
+	{
+		User obj = service.fromDTO(objDto); // converter DTO para User
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build(); //noContent operação que nao retorna nada (204) 
+
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.angelochiarella.workshopmongo.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,12 @@ public class PostService
 	{
 		return repo.findByTitle(text);
 //		return repo.findByTitleContainingIgnoreCase(text);
+	}
+	
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate)
+	{
+		//soma um dia para comparar uma certa data até as "23:59:59 " ( menor ou igual)
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
+		return repo.fullSearch(text, minDate, maxDate);
 	}
 }
